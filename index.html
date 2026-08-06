@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Login</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#0d1117;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    width:350px;
+}
+
+.logo{
+    text-align:center;
+    color:white;
+    font-size:45px;
+    margin-bottom:20px;
+}
+
+h2{
+    text-align:center;
+    color:white;
+    font-weight:400;
+    margin-bottom:20px;
+}
+
+.login-box{
+    background:#161b22;
+    border:1px solid #30363d;
+    padding:20px;
+    border-radius:8px;
+}
+
+label{
+    color:white;
+    font-size:14px;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin-top:8px;
+    margin-bottom:18px;
+    border:1px solid #30363d;
+    border-radius:6px;
+    background:#0d1117;
+    color:white;
+    outline:none;
+}
+
+input:focus{
+    border:1px solid #2f81f7;
+}
+
+.password-box{
+    position:relative;
+}
+
+.password-box button{
+    position:absolute;
+    right:10px;
+    top:9px;
+    border:none;
+    background:none;
+    color:#58a6ff;
+    cursor:pointer;
+    font-size:12px;
+}
+
+.login-btn{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:6px;
+    background:#238636;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.login-btn:hover{
+    background:#2ea043;
+}
+
+.footer{
+    margin-top:20px;
+    border:1px solid #30363d;
+    padding:15px;
+    border-radius:8px;
+    text-align:center;
+    color:white;
+}
+
+.footer a{
+    color:#58a6ff;
+    text-decoration:none;
+}
+
+.message{
+    margin-top:15px;
+    text-align:center;
+    font-size:14px;
+    color:#ff7b72;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="logo">🐱</div>
+
+    <h2>Sign in to GitHub</h2>
+
+    <div class="login-box">
+
+        <label>Email address</label>
+        <input type="email" id="email" placeholder="Enter email">
+
+        <label>Password</label>
+
+        <div class="password-box">
+            <input type="password" id="password" placeholder="Enter password">
+            <button onclick="togglePassword()" type="button">Show</button>
+        </div>
+
+        <button class="login-btn" onclick="login()">Sign in</button>
+
+        <div class="message" id="message"></div>
+
+    </div>
+
+    <div class="footer">
+        New to GitHub?
+        <a href="#">Create an account</a>
+    </div>
+
+</div>
+
+<script>
+
+function togglePassword(){
+
+    let pass=document.getElementById("password");
+
+    if(pass.type==="password"){
+        pass.type="text";
+        event.target.innerHTML="Hide";
+    }
+    else{
+        pass.type="password";
+        event.target.innerHTML="Show";
+    }
+
+}
+
+function login(){
+
+    let email=document.getElementById("email").value.trim();
+    let password=document.getElementById("password").value.trim();
+    let message=document.getElementById("message");
+
+    if(email==="" || password===""){
+        message.style.color="#ff7b72";
+        message.innerHTML="Please fill in all fields.";
+        return;
+    }
+
+    if(password.length<6){
+        message.style.color="#ff7b72";
+        message.innerHTML="Password must be at least 6 characters.";
+        return;
+    }
+
+    message.style.color="#3fb950";
+    message.innerHTML="Login successful! (Demo only)";
+}
+
+</script>
+
+</body>
+</html>
